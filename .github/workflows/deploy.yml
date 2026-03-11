@@ -277,7 +277,7 @@ jobs:
               --restart unless-stopped \
               --network "${NET}" \
               -e TZ=Asia/Seoul \
-              -e PROD___SPRING__SQL__INIT__MODE=never \
+              -e SPRING__SQL__INIT__MODE=never \
               -v /tmp/.env:/app/.env:ro \
               "${IMAGE}"
 
