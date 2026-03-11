@@ -172,6 +172,8 @@ jobs:
             PORT_IN="${{ env.CONTAINER_PORT }}"
             NET="${{ env.DOCKER_NETWORK }}"
             NPM_BASE_URL="${{ env.NPM_BASE_URL }}"
+            NPMPLUS_SSE_RESPONSE_BUFFERING_OFF="${NPMPLUS_SSE_RESPONSE_BUFFERING_OFF:-${{ env.NPMPLUS_SSE_RESPONSE_BUFFERING_OFF }}}"
+            NPMPLUS_SSE_RESPONSE_BUFFERING_OFF="${NPMPLUS_SSE_RESPONSE_BUFFERING_OFF:-true}"
 
             echo "🔹 Use image: ${IMAGE}"
             docker pull "${IMAGE}"
@@ -211,7 +213,7 @@ jobs:
                   --arg domain "${APP_1_DOMAIN}" \
                   --arg host "${SLOT1}" \
                   --argjson port ${PORT_IN} \
-                  --argjson sseResponseBufferingOff ${NPMPLUS_SSE_RESPONSE_BUFFERING_OFF} \
+                  --argjson sseResponseBufferingOff "${NPMPLUS_SSE_RESPONSE_BUFFERING_OFF}" \
                   '{
                     domain_names: [$domain],
                     forward_scheme: "http",
@@ -305,7 +307,7 @@ jobs:
             NEW_CFG=$(echo "${CURRENT_CFG}" | jq \
               --arg host "${GREEN}" \
               --argjson port ${PORT_IN} \
-              --argjson sseResponseBufferingOff ${NPMPLUS_SSE_RESPONSE_BUFFERING_OFF} \
+              --argjson sseResponseBufferingOff "${NPMPLUS_SSE_RESPONSE_BUFFERING_OFF}" \
               '{
                 access_list_id,
                 advanced_config,
