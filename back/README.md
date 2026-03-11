@@ -6463,7 +6463,7 @@ services:
     image: jangka512/pgj:latest
     ports: ["5432:5432"]
     environment:
-      POSTGRES_DATABASES: blog_dev,blog_test
+      POSTGRES_DATABASES: mall_dev,mall_test
     command: >
       postgres
       -c fsync=off
@@ -6631,4 +6631,3 @@ QueryDSL 로 동적 쿼리를 처리하고, `Persistable<Int>` + `SEQUENCE` 로 
 이 코드베이스는 **"실제로 동작하는 서비스"** 를 만들기 위한 실용적인 선택들의 집합이다. 교과서적으로 완벽하지 않지만, 실무에서 흔히 마주치는 문제들을 현실적인 방법으로 해결한다.
 
 코드를 처음 봤을 때 낯설었던 것들이 이제 이유가 있는 선택으로 보인다면, 이 강의 시리즈의 목표는 달성됐다.
-
